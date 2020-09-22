@@ -1,0 +1,11 @@
+{
+	"files.exclude": {
+		"/home/jaimeandres/code/BullCowGame/.git": true,
+		"/home/jaimeandres/code/BullCowGame/.kdev4": true,
+		"/home/jaimeandres/code/BullCowGame/.vscode": true,
+		"/home/jaimeandres/code/BullCowGame/Content": true,
+		"/home/jaimeandres/code/BullCowGame/DerivedDataCache": true,
+		"/home/jaimeandres/code/BullCowGame/Intermediate": true,
+		"/home/jaimeandres/code/BullCowGame/Saved": true
+	}
+}

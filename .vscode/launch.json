@@ -1,0 +1,104 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "BullCowGame (Debug)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGame Linux Debug Build",
+			"program": "/home/jaimeandres/code/BullCowGame/Binaries/Linux/BullCowGame-Linux-Debug",
+			"args": [
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "BullCowGame (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGame Linux DebugGame Build",
+			"program": "/home/jaimeandres/code/BullCowGame/Binaries/Linux/BullCowGame-Linux-DebugGame",
+			"args": [
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "BullCowGame (Development)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGame Linux Development Build",
+			"program": "/home/jaimeandres/code/BullCowGame/Binaries/Linux/BullCowGame",
+			"args": [
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "BullCowGame (Shipping)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGame Linux Shipping Build",
+			"program": "/home/jaimeandres/code/BullCowGame/Binaries/Linux/BullCowGame-Linux-Shipping",
+			"args": [
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "BullCowGame (Test)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGame Linux Test Build",
+			"program": "/home/jaimeandres/code/BullCowGame/Binaries/Linux/BullCowGame-Linux-Test",
+			"args": [
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "BullCowGameEditor (Debug)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGameEditor Linux Debug Build",
+			"program": "/home/jaimeandres/code/UnrealEngine/Engine/Binaries/Linux/UE4Editor-Linux-Debug",
+			"args": [
+				"/home/jaimeandres/code/BullCowGame/BullCowGame.uproject"
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "BullCowGameEditor (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGameEditor Linux DebugGame Build",
+			"program": "/home/jaimeandres/code/UnrealEngine/Engine/Binaries/Linux/UE4Editor",
+			"args": [
+				"/home/jaimeandres/code/BullCowGame/BullCowGame.uproject"
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "BullCowGameEditor (Development)",
+			"request": "launch",
+			"preLaunchTask": "BullCowGameEditor Linux Development Build",
+			"program": "/home/jaimeandres/code/UnrealEngine/Engine/Binaries/Linux/UE4Editor",
+			"args": [
+				"/home/jaimeandres/code/BullCowGame/BullCowGame.uproject"
+			],
+			"cwd": "/home/jaimeandres/code/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "Generate Project Files",
+			"type": "mono",
+			"request": "launch",
+			"program": "/home/jaimeandres/code/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe",
+			"console": "internalConsole",
+			"args": [
+				"-projectfiles",
+				"-vscode",
+				"-project=\"/home/jaimeandres/code/BullCowGame/BullCowGame.uproject\"",
+				"-game",
+				"-engine"
+			],
+			"internalConsoleOptions": "openOnSessionStart",
+			"cwd": "/home/jaimeandres/code/UnrealEngine"
+		}
+	]
+}
