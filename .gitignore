@@ -78,4 +78,7 @@ DerivedDataCache/*
 
 # CMake
 CMakeLists.txt
-MakeFile
+Makefile
+
+#Qmake
+*.pri
