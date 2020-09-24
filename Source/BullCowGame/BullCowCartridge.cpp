@@ -4,32 +4,53 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    PrintLine(TEXT("Welcome to Bull Cow Game"));
     SetupGame();
-    int32 WordLength = HiddenWord.Len();
-    PrintLine(TEXT("Please guess the 4 letter word:")); // word length is a magic number
 }
 
 void UBullCowCartridge::OnInput(const FString &Input) // When the player hits enter
 {
-    ClearScreen();
-
-    if (Input.Equals(HiddenWord))
+    if (bGameOver)
     {
-        PrintLine(TEXT("You have won!"));
+        ClearScreen();
+        SetupGame();
     }
     else
     {
-        if (Input.Len() == HiddenWord.Len())
+        if (Input.Equals(HiddenWord))
         {
-            PrintLine(TEXT("The hidden word is 4 letters"));
+            PrintLine(TEXT("You have won!"));
+            EndGame();
         }
-        PrintLine(TEXT("You have lost.."));
+        else
+        {
+            --Lives;
+            if (Input.Len() == HiddenWord.Len())
+            {
+                PrintLine(TEXT("The hidden word is %i letters"), HiddenWord.Len());
+            }
+            PrintLine(TEXT("You have %i lives left"), Lives);
+            if (Lives == 0)
+            {
+                PrintLine(TEXT("You have lost.."));
+                EndGame();
+            }
+
+        }
     }
+}
+
+void UBullCowCartridge::EndGame()
+{
+    bGameOver = true;
+    PrintLine(TEXT("Press enter to play again.."));
 }
 
 void UBullCowCartridge::SetupGame()
 {
-    HiddenWord = TEXT("self");
     Lives = 3;
+    bGameOver = false;
+    HiddenWord = TEXT("self");
+    PrintLine(TEXT("Welcome to Bull Cow Game"));
+    PrintLine(TEXT("The hidden word is %i letters"), HiddenWord.Len()); // word length is a magic number
+    PrintLine(TEXT("What is your guess?"));
 }
