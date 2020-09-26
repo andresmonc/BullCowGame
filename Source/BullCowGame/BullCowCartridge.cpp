@@ -16,26 +16,7 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
     }
     else
     {
-        if (Input.Equals(HiddenWord))
-        {
-            PrintLine(TEXT("You have won!"));
-            EndGame();
-        }
-        else
-        {
-            --Lives;
-            if (Input.Len() == HiddenWord.Len())
-            {
-                PrintLine(TEXT("The hidden word is %i letters"), HiddenWord.Len());
-            }
-            PrintLine(TEXT("You have %i lives left"), Lives);
-            if (Lives == 0)
-            {
-                PrintLine(TEXT("You have lost.."));
-                EndGame();
-            }
-
-        }
+        ProcessGuess(Input);
     }
 }
 
@@ -47,10 +28,33 @@ void UBullCowCartridge::EndGame()
 
 void UBullCowCartridge::SetupGame()
 {
-    Lives = 3;
-    bGameOver = false;
     HiddenWord = TEXT("self");
+    Lives = HiddenWord.Len();
+    bGameOver = false;
     PrintLine(TEXT("Welcome to Bull Cow Game"));
-    PrintLine(TEXT("The hidden word is %i letters"), HiddenWord.Len()); // word length is a magic number
+    PrintLine(TEXT("The hidden word is %i letters.\nYou have %i lives"), HiddenWord.Len(), Lives); // word length is a magic number
     PrintLine(TEXT("What is your guess?"));
+}
+
+void UBullCowCartridge::ProcessGuess(FString Guess)
+{
+    if (Guess.Equals(HiddenWord))
+    {
+        PrintLine(TEXT("You have won!"));
+        EndGame();
+    }
+    else
+    {
+        --Lives;
+        if (Guess.Len() == HiddenWord.Len())
+        {
+            PrintLine(TEXT("The hidden word is %i letters"), HiddenWord.Len());
+        }
+        PrintLine(TEXT("You have %i lives left"), Lives);
+        if (Lives == 0)
+        {
+            PrintLine(TEXT("You have lost.."));
+            EndGame();
+        }
+    }
 }
