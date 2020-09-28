@@ -34,6 +34,9 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Welcome to Bull Cow Game"));
     PrintLine(TEXT("The hidden word is %i letters.\nYou have %i lives"), HiddenWord.Len(), Lives); // word length is a magic number
     PrintLine(TEXT("What is your guess?"));
+
+    const TCHAR HW[] = TEXT("self");
+    PrintLine(TEXT("Char 1 is: %c"), HW[0]);
 }
 
 void UBullCowCartridge::ProcessGuess(FString Guess)
@@ -42,19 +45,36 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
     {
         PrintLine(TEXT("You have won!"));
         EndGame();
+        return;
     }
-    else
+    if (Guess.Len() == HiddenWord.Len())
     {
-        --Lives;
-        if (Guess.Len() == HiddenWord.Len())
+        PrintLine(TEXT("The hidden word is %i letters\nTry again!"), HiddenWord.Len());
+    }
+    if (!IsIsogram(Guess))
+    {
+        return;
+    }
+    --Lives;
+    PrintLine(TEXT("You have %i lives left"), Lives);
+    if (Lives == 0)
+    {
+        PrintLine(TEXT("You have lost..\nThe correct word was: %s"), HiddenWord);
+        EndGame();
+        return;
+    }
+}
+bool UBullCowCartridge::IsIsogram(FString Word) const
+{
+    for (int32 Index = 0; Index < Word.Len(); Index++)
+    {
+        for (int32 Comparison = Index + 1; Comparison < Word.Len(); Comparison++)
         {
-            PrintLine(TEXT("The hidden word is %i letters"), HiddenWord.Len());
-        }
-        PrintLine(TEXT("You have %i lives left"), Lives);
-        if (Lives == 0)
-        {
-            PrintLine(TEXT("You have lost.."));
-            EndGame();
+            if (Word[Index] == Word[Comparison])
+            {
+                return false;
+            } 
         }
     }
+    return true;
 }
